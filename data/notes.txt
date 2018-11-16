@@ -1,0 +1,75 @@
+# notes.txt
+
+Users and Interests
+  - (1) Home page
+    + Lists all the users name
+    + YAML document
+  - (2) Each name is a link to a page for the user
+  - (3) E-mail address, interests dispayed on user's page
+    + Comma between each interest
+  - (4) Links to other user pages
+    + Bottom of page
+    + Current user page not in links
+  - (5) Layout
+    + "There are !X* users with a total of !X* interests."
+  - (6) Update message to include number of users and interests
+        based on YAML file.
+    + `count_interests` helper method
+    + Total number of interests across all users
+  - (7) Add a user to `users.yaml`
+    + Verify the site loads correctly
+
+Approach
+  - (1)
+    + Main application file
+      = `before` method for loading the `public` YAML file
+      = `get`, `@users` from keys on the top layer of info hash
+    + `home.erb`
+      = Head
+        > Title - Mini Social
+      = Body
+      = `<div>`
+      = `<h2>` - MINI SOCIAL
+      = List the users
+      = Iterate `@users`
+  - (2)
+    + `home.erb`
+      = Add a `<a>` with the `href` for a page by that name
+        > Input the user's name from the
+    + `user_pg.erb`
+      = Page by that name?
+        > I have a list of the users in `@users`
+        > Have `params` hash
+        > Use a `:name` key
+        > Can create a title for any name in the hash with a
+          parameter
+        > Can throw an error if the name is not found
+        > `@user_name` for title in `head`
+
+    + `get` for user pages
+      = Add a `:name` parameter to the route
+  - (3)
+    + Main application file
+    + `user_pg.erb`
+      = `@interests`
+      = `@email`
+      = Output the e-mail
+      = List the interests with a comma
+  - (4)
+    + `user_pg.erb`
+      = Footer
+      = List
+      = Links to other user pages
+      = Iterate `@users`
+        > Interpolate the name into `href` link
+        > Output name in `<li>` item
+  - (5) & (6)
+    + Main application file
+      = Count the users
+      = `count_interests` helper method
+      = Iterate the users
+        > Access the hash with the `@users`
+        > Retrieve the interests arrays
+        > Count the values of each interests array
+  - (7)
+    + Add a user to the `users.yaml` file

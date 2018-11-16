@@ -1,0 +1,6 @@
+<h2>Mini Social</h2>
+<ul>
+  <% @users.each do |user| %>
+    <a href="/<%= user %>"><li><%= user %></li></a>
+  <% end %>
+</ul>

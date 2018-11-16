@@ -1,0 +1,16 @@
+<h2><%= @name %></h2>
+<h4><%= @email %></h4>
+<p><% @interests.each_with_index do |interest, idx| %>
+  <% if idx < (@interests.size - 1) %>
+    <%= "#{interest}, " %>
+  <% else %>
+    <%= interest %>
+  <% end %>
+<% end %></p>
+<ul>
+  <% @users.each do |user| %>
+    <% if user != @name %>
+      <a href="/<%= user %>"><li><%= user %></li></a>
+    <% end %>  
+  <% end %>
+</ul>
